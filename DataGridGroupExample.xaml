@@ -1,0 +1,46 @@
+﻿<DataGrid x:Name="cardDataGrid" Grid.Row="1" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="30,30" IsReadOnly="True"
+                  EnableRowVirtualization="True" SelectionMode="Single" AutoGenerateColumns="False" 
+                  IsSynchronizedWithCurrentItem="False" FontSize="20" HeadersVisibility="Column" Background="White">
+    <DataGrid.Resources>
+        <Style x:Key="GroupHeaderStyle" TargetType="{x:Type GroupItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type GroupItem}">
+                        <Expander x:Name="exp" IsExpanded="True" Background="#FAFAFA" Foreground="Black" MouseEnter="GroupHeader_MouseEnter" MouseLeave="GroupHeader_MouseLeave">
+                            <Expander.Header>
+                                <StackPanel x:Name="groupHeader" Orientation="Horizontal">
+                                    //Group header
+                                </StackPanel>
+                            </Expander.Header>
+                            <Expander.Content>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="40" />
+                                    </Grid.RowDefinitions>
+                                    <ItemsPresenter Grid.Row="0"/>
+
+                                    <StackPanel Grid.Row="1" Orientation="Horizontal" >
+                                        //Element below data row
+                                    </StackPanel>
+                                </Grid>
+                            </Expander.Content>
+                        </Expander>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </DataGrid.Resources>
+    <DataGrid.GroupStyle>
+        <GroupStyle ContainerStyle="{StaticResource GroupHeaderStyle}">
+            <GroupStyle.Panel>
+                <ItemsPanelTemplate>
+                    <DataGridRowsPresenter />
+                </ItemsPanelTemplate>
+            </GroupStyle.Panel>
+        </GroupStyle>
+    </DataGrid.GroupStyle>
+    <DataGrid.Columns>
+        //Data
+    </DataGrid.Columns>
+</DataGrid>
